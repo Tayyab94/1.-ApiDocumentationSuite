@@ -155,8 +155,6 @@ app.MapGet("/products/{id}", (int id) =>
 
 app.Run();
 
-
-
 public record Product(int Id, string Name, decimal Price);
 
 internal sealed class BearerSecuritySchemeTransformer(IAuthenticationSchemeProvider authenticationSchemeProvider)
