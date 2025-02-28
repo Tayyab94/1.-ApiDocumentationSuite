@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.OpenApi;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ModernAPIDoc_Scalar.Models;
@@ -46,6 +46,7 @@ builder.Services.AddAuthentication(options =>
 
          .AddJwtBearer(options =>
          {
+
              options.TokenValidationParameters = new TokenValidationParameters
              {
                  ValidateIssuer = true,
@@ -127,28 +128,25 @@ app.MapPost("/users", (UserLoginModel model, ITokenService _tokenService) =>
 }).Produces<string>(200).Produces(400).WithName("Login").WithSummary("User Login");
 
 
-app.MapGet("/product/ListOfProducts",(int? pageSize, int? page) =>
+app.MapGet("/product/ListOfProducts",[Authorize(Roles = "Admin")](int? pageSize, int? page) =>
 {
     var products = Enumerable.Range(1, 100).Select(index =>
         new Product(index, $"Product {index}", index * 10)).ToArray();
     return products;
 
 }).RequireAuthorization().Produces<List<Product>>(200)
-.Produces(400)
-.WithName("GetProducts")
-.WithTags("products").WithSummary("Retrieve a list of products").WithDescription("""
-    Returns a paginated list of products.
-    Default page size is 10.
-    Use page parameter for pagination.
-    """);
+                          .Produces(400).WithName("GetProducts")
+                          .WithTags("products").WithSummary("Retrieve a list of products").WithDescription("""
+                                                             Returns a paginated list of products.
+                                                             Default page size is 10.
+                                                             Use page parameter for pagination.
+                                                             """);
 
 app.MapPost("/product",(Product product) =>
 {
     return product;
-}).Produces<Product>(201).Produces(400).WithName("CreateProduct")
-.WithTags("Products")
-.WithSummary("Create a new product")
-.WithDescription("Add a new product to the catalog.");
+}).Produces<Product>(201).Produces(400).WithName("CreateProduct").WithTags("Products")
+                        .WithSummary("Create a new product").WithDescription("Add a new product to the catalog.");
 
 
 app.MapGet("/products/{id}", (int id) =>
