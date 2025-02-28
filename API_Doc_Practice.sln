@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.35806.103 d17.14
+VisualStudioVersion = 17.14.35806.103
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StandaredAPI", "StandaredAPI\StandaredAPI.csproj", "{CD6E7A1A-1B91-441E-9505-A9730180FA45}"
 EndProject
@@ -12,6 +12,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSwaggerDemo", "NSwaggerDemo\NSwaggerDemo.csproj", "{56A87658-004E-42ED-BCDF-409EDC2A71DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScalerDemo", "ScalerDemo\ScalerDemo.csproj", "{BE1D96E0-9AC0-4137-BF53-C96FF86FA5FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernAPIDoc_Scalar", "ModernAPIDoc_Scalar\ModernAPIDoc_Scalar.csproj", "{E3D3F003-8825-4EEC-94FC-5B33CAE4D8C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +46,10 @@ Global
 		{BE1D96E0-9AC0-4137-BF53-C96FF86FA5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1D96E0-9AC0-4137-BF53-C96FF86FA5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1D96E0-9AC0-4137-BF53-C96FF86FA5FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D3F003-8825-4EEC-94FC-5B33CAE4D8C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D3F003-8825-4EEC-94FC-5B33CAE4D8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D3F003-8825-4EEC-94FC-5B33CAE4D8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D3F003-8825-4EEC-94FC-5B33CAE4D8C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

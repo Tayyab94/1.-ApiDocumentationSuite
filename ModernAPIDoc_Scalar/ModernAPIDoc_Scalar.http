@@ -1,0 +1,6 @@
+@ModernAPIDoc_Scalar_HostAddress = http://localhost:5077
+
+GET {{ModernAPIDoc_Scalar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

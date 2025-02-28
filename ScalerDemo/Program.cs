@@ -13,7 +13,17 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 
-    app.MapScalarApiReference();
+    //app.MapScalarApiReference();
+    app.MapScalarApiReference(opt =>
+    {
+        opt.Title = "Api Documentation";
+        opt.Theme=ScalarTheme.Kepler;
+        opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
+
+
+    });
+
+
 
 }
 
