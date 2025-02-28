@@ -11,7 +11,19 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ✅ 1. Read JWT Configuration
+var allowedOrigins = "_allowedOrigins";
+// Configure CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(allowedOrigins,
+        //builder => builder.WithOrigins("http://localhost:5000", "http://localhost:5001")  // for sepcific URL
+        builder => builder.AllowAnyOrigin()  // for all 
+        .AllowAnyHeader()
+        .AllowAnyMethod());
+});
+
+
+// Read JWT Configuration
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 builder.Services.AddAuthentication(options =>
         {
@@ -93,6 +105,8 @@ if(app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Use CORS Middleware
+app.UseCors(allowedOrigins);
 // Add authentication middleware
 app.UseAuthentication();
 app.UseAuthorization();
